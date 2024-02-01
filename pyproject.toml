@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "linear programing optimization"
+version = "1.0.0"
+description = "University Project"
+authors = ["Szymon Kwieciński <kwiecinskji@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
