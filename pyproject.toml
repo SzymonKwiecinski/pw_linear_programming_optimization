@@ -7,8 +7,66 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+pulp = "^2.8.0"
 
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.1.15"
+mypy = "^1.8.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+ignore_missing_imports = true
+warn_no_return = false
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+
+[tool.ruff.lint]
+preview = true
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "T",  # print found
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+    "UP", # pyupgrade
+]
+
+fixable = ["ALL"]
+extend-unsafe-fixes = ["UP"]
+
+ignore = [
+    "E501", # line too long, handled by formatter/black
+    "B008", # do not perform function calls in argument defaults
+    "C901", # too complex
+    "W191", # indentation contains tabs
+    "E111", # why: compatibility between linter and formater
+    "E114", # why: compatibility between linter and formater
+    "E117", # why: compatibility between linter and formater
+    "D206", # why: compatibility between linter and formater
+    "D300", # why: compatibility between linter and formater
+]
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+[tool.ruff.pyupgrade]
+# Preserve types, even if a file imports `from __future__ import annotations`.
+keep-runtime-typing = true
